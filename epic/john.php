@@ -7,7 +7,7 @@
 	<body>
 		<h1>Data Design Project</h1>
 		<h2>User Persona:</h2>
-		<img src="./john.jpg" alt="John Alperstein buying Ethereum with Coinbase's mobile app." width="500px" height="250px">
+		<img src="./john.jpg" alt="John Alperstein buying Bitcoin with Coinbase's mobile app." width="500px" height="250px">
 		<div>
 			<ul>
 				<li><strong>Name: </strong>John Alperstein</li>

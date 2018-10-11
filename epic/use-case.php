@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<title>Data Design Project</title>
+		<title>Use Case</title>
 	</head>
 	<body>
 		<h1>Data Design Project</h1>
@@ -26,8 +26,7 @@
 		<p>
 			<strong>Usage postconditions: </strong>John will have bitcoin stored on the site's vault, that he can then send to a wallet or exchange.
 		</p>
-		<p>
-			<strong>Interaction Flow: </strong>
+		<p><strong>Interaction Flow: </strong>
 			<ul>
 				<li>John types coinbase.com into his web browser.</li>
 				<li>Server returns coinbase's login page.</li>
@@ -41,9 +40,10 @@
 				<li>Server completes request and delivers bitcoin to John's vault.</li>
 				<li>John contemplates his decision to buy in this market, forgetting entirely about his user experience.</li>
 			</ul>
-		</p>
 		<a href="index.php">Back to Index</a>
 		--
-		<a href="conceptual-model.php">Use Case</a>
+		<a href="john.php">Persona</a>
+		--
+		<a href="conceptual-model.php">Conceptual Model</a>
 	</body>
 </html>
