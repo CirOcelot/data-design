@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Data Design Project</title>
+		<link rel="icon" href="./stargate-icon.ico">
 	</head>
 	<body>
 		<h1>Data Design Project</h1>
