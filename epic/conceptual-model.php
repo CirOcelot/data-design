@@ -30,7 +30,7 @@
 		<h4>Your Portfolio:</h4>
 		<ul>
 			<li>portfolioUserId (foreign key)</li>
-			<li>portfolioTransactionId (primary key)</li>
+			<li>portfolioId (primary key)</li>
 			<li>portfolioCoinId (foreign key)</li>
 			<li>portfolioListStyle</li>
 			<li>portfolioChartStyle</li>
