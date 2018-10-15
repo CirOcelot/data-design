@@ -13,6 +13,6 @@ UPDATE user SET userName = "jjain2" WHERE userId = unhex("4098fd60b3014e5a8c9a4c
 
 DELETE FROM portfolio WHERE portfolioId = unhex("0876f936163f469abe5bd8c14a8aa0a1");
 
-SELECT portfolioId, portfolioUserId, portfolioCoinId, portfolioListStyle, portfolioChartStyle WHERE portfolioId = unhex("0876f936163f469abe5bd8c14a8aa0a1");
+SELECT portfolioId, portfolioUserId, portfolioCoinId, portfolioListStyle, portfolioChartStyle FROM portfolio WHERE portfolioId = unhex("0876f936163f469abe5bd8c14a8aa0a1");
 
 SELECT portfolio.portfolioId, portfolio.portfolioUserId, portfolio.portfolioCoinId, coin.coinId FROM portfolio INNER JOIN coin ON portfolio.portfolioCoinId = coin.coinId WHERE portfolioId = unhex("0876f936163f469abe5bd8c14a8aa0a1");
