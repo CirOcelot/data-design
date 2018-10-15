@@ -8,10 +8,10 @@ CREATE TABLE user (
 	userId BINARY(16) NOT NULL,
 	userName VARCHAR(32) NOT NULL,
 	userEmail VARCHAR(128) NOT NULL,
-	userSettings CHAR(128) NOT NULL,
-	userSupport CHAR(128) NOT NULL,
-	userInvite CHAR(128) NOT NULL,
-	userSignOut CHAR(128) NOT NULL,
+	userSettings VARCHAR(128) NOT NULL,
+	userSupport VARCHAR(128) NOT NULL,
+	userInvite VARCHAR(128) NOT NULL,
+	userSignOut VARCHAR(128) NOT NULL,
 	UNIQUE(userEmail),
 	UNIQUE(userInvite),
 	PRIMARY KEY(userId)
@@ -27,14 +27,14 @@ CREATE TABLE coin (
 );
 
 CREATE TABLE portfolio (
-	portfolioUserId BINARY(16),
+	portfolioUserId BINARY(16) NOT NULL ,
 	portfolioCoinId BINARY(16),
 	portfolioListStyle VARCHAR(360),
 	portfolioChartStyle VARCHAR(360),
-	portfolioId BINARY(16),
+	portfolioId BINARY(16) NOT NULL ,
 	INDEX(portfolioUserId),
 	INDEX(portfolioCoinId),
 	FOREIGN KEY(portfolioUserId) REFERENCES user(userId),
 	FOREIGN KEY(portfolioCoinId) REFERENCES coin(coinId),
 	PRIMARY KEY(portfolioId)
-)
+);
