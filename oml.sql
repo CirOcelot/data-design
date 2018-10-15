@@ -1,4 +1,3 @@
-
 INSERT INTO user(userId, userName, userEmail, userSettings, userSupport, userInvite, userSignOut)
 VALUES (unhex("4098fd60b3014e5a8c9a4c69e330773f"), "userName","userEmail", "user Settings page", "user support page",
 "user invite page","user sign out");
