@@ -15,5 +15,4 @@ DELETE FROM portfolio WHERE portfolioId = unhex("0876f936163f469abe5bd8c14a8aa0a
 
 SELECT portfolioId, portfolioUserId, portfolioCoinId, portfolioListStyle, portfolioChartStyle WHERE portfolioId = unhex("0876f936163f469abe5bd8c14a8aa0a1");
 
-SELECT portfolio.portfolioId, portfolio.portfolioUserId, portfolio.portfolioCoinId, coin.coinId FROM portfolio INNER JOIN coin ON portfolio.portfolioCoinId = coin.coinId
-WHERE portfolioId = unhex("0876f936163f469abe5bd8c14a8aa0a1");
+SELECT portfolio.portfolioId, portfolio.portfolioUserId, portfolio.portfolioCoinId, coin.coinId FROM portfolio INNER JOIN coin ON portfolio.portfolioCoinId = coin.coinId WHERE portfolioId = unhex("0876f936163f469abe5bd8c14a8aa0a1");
