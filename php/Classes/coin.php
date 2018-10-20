@@ -1,12 +1,13 @@
 <?php
 /**
+ *
  * @author Jack Jain <jjain1998@gmail.com>
  * @version 0.3.1
  * Namespace is used to prevent clashing class names in different .php files.
  **/
-	namespace jjain2\dataDesign;
+	namespace jjain2\DataDesign;
 
-	require_once(dirname(__DIR__, 2) . "/vendor/autoload.php");
+	require_once(dirname(__DIR__, 2) . "./autoload.php");
 
 	class coin {
 		/**
@@ -18,22 +19,23 @@
 		 * coin's price at given time
 		 * @var string $coinMarketCap
 		 **/
-		private $coinMarketCap;
+		public $coinMarketCap;
 		/**
 		 * this is the highest the coin has been
 		 * @var string $coinAllTimeHigh
 		 */
-		private $coinAllTimeHigh;
+		public $coinAllTimeHigh;
 		/**
 		 * dollar value that has run through the coin in the past 24 hours
 		 * @var string $coinVolume
 		 */
-		private $coinVolume;
-
+		public $coinVolume;
+		/*
 		 * number of coins being bought and sold
 		 * @var
 		 */
-		private $coinSupply;
+		public $coinSupply;
+
 		public function __construct($newCoinId, string $newCoinMarketCap, string $newCoinAllTimeHigh, string $newCoinVolume,
 	 string $newCoinSupply) {
 			$this -> setCoinId($newCoinId);
