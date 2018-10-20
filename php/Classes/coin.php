@@ -9,6 +9,7 @@
 
 	require_once(dirname(__DIR__, 2) . "./autoload.php");
 	class Coin {
+		use ValidateUuid;
 		/**
 		 * id for the coin, primary key.
 		 * @var Uuid $coinId
@@ -53,10 +54,10 @@
 	}
 	public function setCoinId($newCoinId) : void {
 			try{
-				$uuid = self::validateUuid($newCoinId);
+				$uuid = self::ValidateUuid($newCoinId);
 			} catch(\InvalidArgumentException|\RangeException|\Exception|\TypeError $exception) {
 			}
-			$this->coinId=$uuid;
+			$this->coinId = $uuid;
 	}
 
 		/**
