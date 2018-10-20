@@ -8,7 +8,7 @@
 	namespace jjain2\DataDesign;
 
 	require_once(dirname(__DIR__, 2) . "./autoload.php");
-	class coin {
+	class Coin {
 		/**
 		 * id for the coin, primary key.
 		 * @var Uuid $coinId
@@ -76,9 +76,79 @@
 			if(empty($newCoinMarketCap) === true) {
 				throw (new \InvalidArgumentException("Market cap is empty"));
 			}
-			if(stlen($newCoinMarketCap) >= 9) {
+			if(strlen($newCoinMarketCap) >= 9) {
 				throw (new \RangeException("Content too large"));
 			}
 			$this->coinMarketCap = $newCoinMarketCap;
 	}
+
+		/**
+		 * @return string
+		 */
+		public function getCoinAllTimeHigh(): string {
+			return $this->coinAllTimeHigh;
+		}
+
+		/**
+		 * @param string $newCoinAllTimeHigh
+		 */
+		public function setCoinAllTimeHigh(string $newCoinAllTimeHigh): void {
+			$newCoinAllTimeHigh = trim($newCoinAllTimeHigh);
+			$newCoinAllTimeHigh = filter_var($newCoinAllTimeHigh,
+				FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+			if(empty($newCoinAllTimeHigh)=== true) {
+				throw (new \InvalidArgumentException("All time high is empty"));
+			}
+			if(strlen($newCoinAllTimeHigh) >=10){
+				throw (new \RangeException("Content too large"));
+			}
+			$this->coinAllTimeHigh=$newCoinAllTimeHigh;
+		}
+
+		/**
+		 * @return string
+		 */
+		public function getCoinVolume(): string {
+			return $this->coinVolume;
+		}
+
+
+		/**
+		 * @param string $newCoinVolume
+		 */
+		public function setCoinVolume (string $newCoinVolume): void {
+			$newCoinVolume = trim($newCoinVolume);
+			$newCoinVolume = filter_var($newCoinVolume,
+				FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+			if(empty($newCoinVolume) === true) {
+				throw (new \InvalidArgumentException("Volume is empty"));
+			}
+			if(strlen($newCoinVolume) >=10){
+				throw (new \RangeException("Content too large"));
+			}
+			$this->coinAllTimeHigh=$newCoinVolume;
+		}
+
+		/**
+		 * @return mixed
+		 */
+		public function getCoinSupply() {
+			return $this->coinSupply;
+		}
+
+		/**
+		 * @param string $newCoinSupply
+		 */
+		public function setCoinSupply(string $newCoinSupply): void {
+			$newCoinSupply = trim($newCoinSupply);
+			$newCoinSupply = filter_var($newCoinSupply,
+				FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+			if(empty($newCoinSupply)=== true) {
+				throw (new \InvalidArgumentException("Supply is empty"));
+			}
+			if(strlen($newCoinSupply) >=10){
+				throw (new \RangeException("Content too large"));
+			}
+			$this->coinAllTimeHigh=$newCoinSupply;
+		}
 	}
