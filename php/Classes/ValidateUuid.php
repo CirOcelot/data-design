@@ -1,6 +1,7 @@
 <?php
 namespace jjain2\DataDesign;
-require_once(dirname("./autoload.php"));
+require_once("../Classes/autoload.php");
+require_once (dirname(__DIR__, 2). "/vendor/autoload.php");
 use Ramsey\Uuid\Uuid;
 /**
  * Trait to validate a uuid
@@ -8,7 +9,8 @@ use Ramsey\Uuid\Uuid;
  * This trait will validate a uuid in any of the following three formats:
  *
  * 1. human readable string (36 bytes)
- * 2. binary string (16 bytes)
+ * 2. binary string (16 byte
+ * s)
  * 3. Ramsey\Uuid\Uuid object
  *
  * @author Dylan McDonald <dmcdonald21@cnm.edu>
