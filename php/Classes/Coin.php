@@ -155,4 +155,11 @@
 			$this->coinAllTimeHigh=$newCoinSupply;
 		}
 
+		public function insert(\PDO $pdo) : void {
+			$query = "INSERT INTO coin(coinId, coinMarketCap, coinAllTimeHigh, coinVolume, coinSupply) VALUES (:coinId, :coinMarketCap, :coinAllTimeHigh, :coinVolume, :coinSupply)";
+			$statement = $pdo->prepare($query);
+			$parameters = ["coinId" => $this->coinId->getBytes(), "coinMarketCap" => $this->coinMarketCap, "coinAllTimeHigh" => $this->coinAllTimeHigh, "coinVolume" => $this->coinVolume, "coinSupply" => $this->coinSupply];
+
+		}
+
 	}
