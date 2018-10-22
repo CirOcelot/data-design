@@ -152,4 +152,5 @@
 			}
 			$this->coinAllTimeHigh=$newCoinSupply;
 		}
+
 	}
