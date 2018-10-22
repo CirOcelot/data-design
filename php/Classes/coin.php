@@ -7,7 +7,7 @@
  **/
 	namespace jjain2\DataDesign;
 
-	require_once(dirname(__DIR__, 2) . "./autoload.php");
+	require_once("./autoload.php");
 	class Coin {
 		use ValidateUuid;
 		/**
