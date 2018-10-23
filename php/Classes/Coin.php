@@ -158,7 +158,42 @@
 			$query = "INSERT INTO coin(coinId, coinMarketCap, coinAllTimeHigh, coinVolume, coinSupply) VALUES (:coinId, :coinMarketCap, :coinAllTimeHigh, :coinVolume, :coinSupply)";
 			$statement = $pdo->prepare($query);
 			$parameters = ["coinId" => $this->coinId->getBytes(), "coinMarketCap" => $this->coinMarketCap, "coinAllTimeHigh" => $this->coinAllTimeHigh, "coinVolume" => $this->coinVolume, "coinSupply" => $this->coinSupply];
-
+			$statement->execute($parameters);
 		}
 
+		public function delete(\PDO $pdo) : void {
+			$query = "DELETE FROM coin WHERE coinId = :coinId";
+			$statement=$pdo->prepare($query);
+			$parameters = ["coinId" => $this->coinId->getBytes()];
+			$statement->execute($parameters);
+		}
+
+		public function update(\PDO $pdo) : void {
+			$query = "UPDATE coin SET coinMarketCap = :coinMarketCap, coinAllTimeHigh = :coinAllTimeHigh, coinVolume = :coinVolume, coinSupply = :coinSupply, coinId = :coinId";
+			$statement = $pdo->prepare($query);
+			$parameters = ["coinId" => $this->coinId->getBytes(), "coinMarketCap" => $this->coinMarketCap, "coinAllTimeHigh" => $this->coinAllTimeHigh, "coinVolume" => $this->coinVolume, "coinSupply" => $this->coinSupply];
+			$statement->execute($parameters);
+		}
+		public static function getCoinByCoinId(\PDO $pdo, $coinId) : ?Coin {
+			try{
+				$coinId = self::validateUuid($coinId);
+			} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+			$query = "SELECT coinId, coinMarketCap, coinAllTimeHigh, coinVolume, coinSupply FROM coin WHERE coinId = :coinId";
+			$statement = $pdo->prepare($query);
+			$parameters = ["coinId" =>$coinId->getBytes()];
+			$statement->execute($parameters);
+			try{
+				$coin = null;
+				$statement->setFetchMode(\PDO::FETCH_ASSOC);
+				$row = $statement->fetch();
+				if($row !== false) {
+					$coin = new Coin($row["coinId"], $row["coinMarketCap"], $row["coinAllTimeHigh"], $row["coinVolume"], $row["coinSupply"]);
+				}
+			} catch(\Exception $exception) {
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+			return($coin);
+		}
 	}
