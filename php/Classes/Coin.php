@@ -196,4 +196,29 @@
 			}
 			return($coin);
 		}
+	public static function getCoinByCoinVolume(\PDO $pdo, string $coinVolume) : \SplFixedArray {
+			$coinVolume = trim($coinVolume);
+			$coinVolume = filter_var($coinVolume, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+			if(empty($coinVolume)=== true) {
+				throw (new \PDOException("Coin volume is invalid"));
+			}
+			$coinVolume = str_replace("_", "\\_",str_replace("%", "\\%", $coinVolume));
+			$query = "SELECT coinId, coinMarketCap, coinAllTimeHigh, coinVolume, coinSupply FROM coin WHERE coinVolume LIKE :coinVolume";
+			$statement = $pdo->prepare($query);
+			$coinVolume = "%$coinVolume%";
+			$parameters = ["coinVolume" => $coinVolume];
+			$statement-> execute($parameters);
+			$coins = new \SplFixedArray($statement->rowCount());
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			while(($row = $statement->fetch()) !== false){
+				try{
+					$coin = new Coin($row["coinId"], $row["coinMarketCap"], $row["coinAllTimeHigh"], $row["coinVolume"], $row["coinSupply"]);
+					$coins[$coins->key()] = $coin;
+					$coins->next();
+				} catch(\Exception $exception) {
+					throw (new \PDOException($exception->getMessage(), 0, $exception));
+				}
+			}
+			return($coins);
+	}
 	}
