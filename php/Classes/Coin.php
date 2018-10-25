@@ -220,5 +220,6 @@
 				}
 			}
 			return($coins);
+			var_dump($coins);
 	}
 	}
